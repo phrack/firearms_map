@@ -20,7 +20,7 @@ with open('ffl-list-pennsylvania.json', 'w') as f:
     f.write('{"ffls":[')
 
     jsonRowTemplate = '{{"businessName":"{}","url":"{}","address":"{}","lat":"{}",' + \
-                      '"long":"{}","phone":"{}","status":"uncontacted"}}'
+                      '"lon":"{}","phone":"{}","status":"uncontacted"}}'
 
     for i in df.index:
         address = '{}, {}, {} {}'.format(df['Premise Street'][i], df['Premise City'][i], 
