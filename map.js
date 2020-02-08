@@ -39,7 +39,7 @@ function createMap(fflsJson) {
   total_markers = 0;
   joined_markers = 0;
   contacted_markers = 0;
-  rejected_markets = 0;
+  rejected_markers = 0;
   uncontacted_markers = 0;
 
 
