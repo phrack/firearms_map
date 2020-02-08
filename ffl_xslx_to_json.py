@@ -25,7 +25,7 @@ def get_coordinates_for_address(address):
 
         if address_data['results']:
             coords['lat'] = address_data['results'][0]['locations'][0]['latLng']['lat']
-            coords['lng'] = address_data['results'][0]['locations'][0]['latLng']['lng']
+            coords['lon'] = address_data['results'][0]['locations'][0]['latLng']['lng']
 
     return coords
 
