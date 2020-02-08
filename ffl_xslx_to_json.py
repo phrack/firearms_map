@@ -8,7 +8,7 @@ import urllib.parse
 
 # This script tries to use the US Census geocoding API, but this service does not support a lot of businesses.
 # As a fallback, MapQuest's geocoding API is used assuming an API key is specified.
-MAP_QUEST_API_KEY=''
+MAP_QUEST_API_KEY='Hfd69ylv3AF2NwDvE9JePSKGBVBjjWp9'
 
 def get_coordinates_for_address(address):
     encoded_address = urllib.parse.urlencode({'address' : address})
@@ -50,7 +50,7 @@ with open('ffl-list-pennsylvania.json', 'w') as f:
             continue
 
         business_name = ''
-        if isinstance(df['Business Name'][111], float):
+        if isinstance(df['Business Name'][i], float):
             business_name = df['License Name'][i]
         else:
             business_name = df['Business Name'][i]
