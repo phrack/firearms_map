@@ -8,7 +8,7 @@ import urllib.parse
 
 # This script tries to use the US Census geocoding API, but this service does not support a lot of businesses.
 # As a fallback, MapQuest's geocoding API is used assuming an API key is specified.
-MAP_QUEST_API_KEY='Hfd69ylv3AF2NwDvE9JePSKGBVBjjWp9'
+MAP_QUEST_API_KEY=''
 
 def get_coordinates_for_address(address):
     encoded_address = urllib.parse.urlencode({'address' : address})
