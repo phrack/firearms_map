@@ -5,6 +5,10 @@ import json
 import urllib.request
 import urllib.parse
 
+# This script tries to use the US Census geocoding API, but this service does not support a lot of businesses.
+# As a fallback, MapQuest's geocoding API is used assuming an API key is specified.
+MAP_QUEST_API_KEY=''
+
 def get_coordinates_for_address(address):
     encoded_address = urllib.parse.urlencode({'address' : address})
     r = urllib.request.urlopen('https://geocoding.geo.census.gov/geocoder/locations/onelineaddress?{}&benchmark=9&format=json'.format(encoded_address))
@@ -14,6 +18,14 @@ def get_coordinates_for_address(address):
     if address_data['result']['addressMatches']:
         coords['lat'] = address_data['result']['addressMatches'][0]['coordinates']['y']
         coords['lon'] = address_data['result']['addressMatches'][0]['coordinates']['x']
+    elif MAP_QUEST_API_KEY:
+        encoded_address = urllib.parse.urlencode({'location' : address})
+        r = urllib.request.urlopen('http://open.mapquestapi.com/geocoding/v1/address?key={}&{}'.format(MAP_QUEST_API_KEY, encoded_address))
+        address_data = json.loads(r.read().decode('utf-8'))
+
+        if address_data['results']:
+            coords['lat'] = address_data['results'][0]['locations'][0]['latLng']['lat']
+            coords['lng'] = address_data['results'][0]['locations'][0]['latLng']['lng']
 
     return coords
 
