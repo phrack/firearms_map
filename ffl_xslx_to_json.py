@@ -78,6 +78,6 @@ with open('ffl-list-pennsylvania.json', 'w') as f:
         count+=1
 
         if count % 100 == 0:
-            print('Processed ' + str(count) + 'entries')
+            print('Processed {} entries'.format(str(count)))
 
     f.write(']}')
