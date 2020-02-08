@@ -36,19 +36,32 @@ function createMap(fflsJson) {
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, '
   }).addTo(fflMap);
 
+  total_markers = 0;
+  joined_markers = 0;
+  contacted_markers = 0;
+  rejected_markets = 0;
+  uncontacted_markers = 0;
+
+
   ffls = JSON.parse(fflsJson).ffls;
   for (var i in ffls) {
     ffl = ffls[i];
 
+    total_markers++;
+
     var icon;
     if (ffl.status == 'joined') {
       icon = greenIcon;
+      joined_markers++;
     } else if (ffl.status == 'contacted') {
       icon = yellowIcon;
+      contacted_markers++;
     } else if (ffl.status == 'rejected') {
       icon = redIcon;
+      rejected_markers++;
     } else {
       icon = grayIcon;
+      uncontacted_markers++;
     }
 
     fflMarker = L.marker([ffl.lat, ffl.lon], {
@@ -62,6 +75,8 @@ function createMap(fflsJson) {
     } else {
       namePart = ffl.businessName;
     }
+
+    document.getElementById("map_status").innerHTML = 'Of ' + total_markers + ' potential committee members, ' + uncontacted_markers + ' have not been contacted, ' + contacted_markers + ' have been contacted but have not responded, ' + joined_markers + ' have joined the committee, and ' + rejected_markers ' decided to not contribute to the cause. Help us turn ever marker green by contacting those local to you.';
 
     fflMarker.bindPopup(namePart + '<br>' + ffl.address + '<br>' + ffl.phone + '<br>Status: ' + ffl.status);
   }
