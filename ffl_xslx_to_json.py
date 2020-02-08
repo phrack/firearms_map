@@ -2,6 +2,7 @@
 
 import pandas as pd
 import json
+import math
 import urllib.request
 import urllib.parse
 
@@ -37,6 +38,8 @@ with open('ffl-list-pennsylvania.json', 'w') as f:
     jsonRowTemplate = '{{"businessName":"{}","url":"{}","address":"{}","lat":"{}",' + \
                       '"lon":"{}","phone":"{}","status":"uncontacted"}}'
 
+    count = 0;
+
     for i in df.index:
         address = '{}, {}, {} {}'.format(df['Premise Street'][i], df['Premise City'][i], 
                   df['Premise State'][i], df['Premise Zip Code'][i])
@@ -46,14 +49,28 @@ with open('ffl-list-pennsylvania.json', 'w') as f:
             print('Could not get coordinates for: ' + address)
             continue
 
-        business_name = df['Business Name'][i]
-        if not business_name:
+        business_name = ''
+        if isinstance(df['Business Name'][111], float):
             business_name = df['License Name'][i]
+        else:
+            business_name = df['Business Name'][i]
+
+        phone_number = ''
+        if math.isnan(df['Voice Phone'][i]):
+            print('No phone number for: ' + address)
+            continue
+        else:
+            phone_number = str(int(df['Voice Phone'][i]))
 
         f.write(jsonRowTemplate.format(business_name, "", address, coords['lat'], 
-                coords['lon'], str(int(df['Voice Phone'][i]))))
+                coords['lon'], phone_number))
 
         if i != df.index.size - 1:
             f.write(',')
+
+        count+=1
+
+        if count % 100 == 0:
+            print('Processed ' + count + 'entries')
 
     f.write(']}')
