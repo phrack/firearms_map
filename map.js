@@ -76,7 +76,7 @@ function createMap(fflsJson) {
       namePart = ffl.businessName;
     }
 
-    document.getElementById("map_status").innerHTML = 'Of ' + total_markers + ' potential committee members, ' + uncontacted_markers + ' have not been contacted, ' + contacted_markers + ' have been contacted but have not responded, ' + joined_markers + ' have joined the committee, and ' + rejected_markers ' decided to not contribute to the cause. Help us turn ever marker green by contacting those local to you.';
+    document.getElementById("map_status").innerHTML = 'Of ' + total_markers + ' potential committee members, ' + uncontacted_markers + ' have not been contacted, ' + contacted_markers + ' have been contacted but have not responded, ' + joined_markers + ' have joined the committee, and ' + rejected_markers + ' decided to not contribute to the cause. Help us turn ever marker green by contacting those local to you.';
 
     fflMarker.bindPopup(namePart + '<br>' + ffl.address + '<br>' + ffl.phone + '<br>Status: ' + ffl.status);
   }
