@@ -1,65 +1,110 @@
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-us" xml:lang="en-us">
+
 <head>
- <title>Pennsylvania Committee of Correspondence</title>
+  <title>Pennsylvania Committee of Correspondence</title>
 
- <meta charset="utf-8">
- <meta name="description" content="A grassroots effort to organize against big-money efforts to degrade and destroy our constitutional rights.">
-    
- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="A grassroots effort to organize against big-money efforts to degrade and destroy our constitutional rights.">
 
- <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-   crossorigin=""></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+    integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+    crossorigin="" />
 
- <style>
-  #mapid { width: 800px; height: 600px; }
- </style>
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+    integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+    crossorigin=""></script>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/site.css" />
 </head>
 
 <body>
- <h1>Pennsylvania Committee of Correspondence</h1>
+  <div class="bg-light mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+    <div class="my-3 p-3">
+      <h1 class="display-5">Pennsylvania Committee of Correspondence</h1>
+      <p class="lead">Protecting our natural rights.</p>
+      <p class="lead">Contact: <a href="mailto:info@pagunvote.com">info@pagunvote.com</a></p>
+    </div>
+    
+    <div id="key">
+      <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png"
+        alt="Not Contacted" />=Not Contacted,
+      <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png"
+        alt="Contacted, No Response" />=Contacted, no response yet,
+      <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png"
+        alt="Joined the Committee" />=Joined the Committee, and
+      <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png"
+        alt="Refused to Join" />=Refused to join
+    </div>
 
- <div id="key"><img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png" />=Not Contacted, <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png" />=Contacted, no response yet, <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-green.png" />=Joined the Committee, and <img src="https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png" />=Refused to join</div>
+    <div id="mapid"></div>
 
- <div id="mapid"></div>
+    <div id="map_status"></div>
 
- <div id="map_status"></div>
+    <br>
 
- <br>
+    <div id="intro">Pennsylvanians! Former NY City Mayor and current presidential candidate, Michael Bloomberg has <a
+        href="https://www.ccrkba.org/ccrkba-warns-bloomberg-bought-virginia-now-hes-trying-to-buy-u-s/">committed $60
+        million</a> to the cause of turning more than a dozen currently pro-grun states anti-gun in 2020. Pennsylvania
+      is
+      near the top of his hit list. This is a presidential election year with many state-level elections. 60 million
+      dollars goes extremely far in local elections. Bloomberg spent $2.5 million to flip <a
+        href="https://www.reddit.com/r/VAGuns/">Virginia</a> from being equivalent to Pennsylvania to equivalent to
+      California in terms of <a href="https://vcdl.org/">our second amendment rights</a>. Now is the time for action!
+    </div>
 
- <script src="map.js"></script>
+    <br>
 
- <div id="intro">Pennsylvanians! Former NY City Mayor and current presidential candidate, Michael Bloomberg has <a href="https://www.ccrkba.org/ccrkba-warns-bloomberg-bought-virginia-now-hes-trying-to-buy-u-s/">committed $60 million</a> to the cause of turning more than a dozen currently pro-grun states anti-gun in 2020. Pennsylvania is near the top of his hit list. This is a presidential election year with many state-level elections. 60 million dollars goes extremely far in local elections. Bloomberg spent $2.5 million to flip <a href="https://www.reddit.com/r/VAGuns/">Virginia</a> from being equivalent to Pennsylvania to equivalent to California in terms of <a href="https://vcdl.org/">our second amendment rights</a>. Now is the time for action!</div> 
+    <div id="nextstep">Bloomberg is worth $50 billion. We cannot outspend him. We cannot bankrupt him. However, we can
+      outvote him!</div>
 
- <br>
+    <br>
 
- <div id="nextstep">Bloomberg is worth $50 billion. We cannot outspend him. We cannot bankrupt him. However, we can outvote him!</div>
+    <div id="plan">Based on the hypothesis that most gun owners visit at least a gun store or a gun club several times a
+      year, the Pennsylvania Committee of Correspondence proposes we organize these groups to spread the message that we
+      must vote if we do not want to fight. This webpage exists to present potential members of the Committee of
+      Correspondence and we need your helping including them. Visit your local gray map markers, explain the situation,
+      and ask them to join the Committee of Correspondence today! All they have to do is provide a point of contact,
+      receive three points of information building up to the election, and share this information with every potential
+      pro-gun voter they come into contact with. <a href="mailto:info@pagunvote.com">Email us</a> (1) when you've
+      contacted a gray marker, (2) when they've agreed to be included and provided an email address, or (3) refuse to
+      join
+      our efforts to protect our rights. When you email us about a specific marker (include the address in your email)
+      we'll update the marker in our map.
 
- <br>
+      <br><br>
 
- <div id="plan">Based on the hypothesis that most gun owners visit at least a gun store or a gun club several times a year, the Pennsylvania Committee of Correspondence proposes we organize these groups to spread the message that we must vote if we do not want to fight. This webpage exists to present potential members of the Committee of Correspondence and we need your helping including them. Visit your local gray map markers, explain the situation, and ask them to join the Committee of Correspondence today! All they have to do is provide a point of contact, receive three points of information building up to the election, and share this information with every potential pro-gun voter they come into contact with. <a href="mailto:info@pagunvote.com">Email us</a> (1) when you've contacted a gray marker, (2) when they've agreed to be included and provided an email address, or (3) refuse to join our efforts to protect our rights. When you email us about a specific marker (include the address in your email) we'll update the marker in our map.
+      It is important that you email us for any one of those cases. With a collection of email addresses belonging to
+      supporters, we'll turn the wheels of victory by:
 
- <br><br>
+      <ol class="centered-list">
+        <li>Emailing the committee information about registering to vote.</li>
+        <li>Emailing the committee the <a href="https://foac-pac.org/">FOAC</a> Voter Guide for 2020 when it is ready.
+        </li>
+        <li>Emailing the committee information about when and where to vote.</li>
+      </ol>
 
- It is important that you email us for any one of those cases. With a collection of email addresses belonging to supporters, we'll turn the wheels of victory by:
+      Committee members will take this data and spread it to every pro-gun voter they can find, be it neighbors,
+      friends,
+      customers, colleagues, etc.
+      <div>
 
-  <ol>
-   <li>Emailing the committee information about registering to vote.</li>
-   <li>Emailing the committee the <a href="https://foac-pac.org/">FOAC</a> Voter Guide for 2020 when it is ready.</li>
-   <li>Emailing the committee information about when and where to vote.</li>
-  </ol>
+        <br>
 
-  Committee members will take this data and spread it to every pro-gun voter they can find, be it neighbors, friends, customers, colleagues, etc.
- <div>
+        <div id="conclusion">If we band together we can win. Let's turn this entire map green!</div>
 
- <br>
+        <br>
+      </div>
+    </div>
+  </div>
 
- <div id="conclusion">If we band together we can win. Let's turn this entire map green!</div>
-
- <br>
-
- <div id="contact">Contact: <a href="mailto:info@pagunvote.com">info@pagunvote.com</a></div>
+  <script src="js/map.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+  </script>
+  <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
