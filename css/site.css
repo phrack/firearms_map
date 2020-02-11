@@ -1,0 +1,13 @@
+/* site css */
+
+#mapid {
+    width: 800px;
+    height: 600px;
+    margin: auto;
+}
+
+.centered-list {
+    list-style-position: inside;
+}
+
+/* bootstrap overrides */
