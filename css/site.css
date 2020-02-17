@@ -6,6 +6,12 @@
     margin: auto;
 }
 
+.link-faq {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
 .centered-list {
     list-style-position: inside;
 }
